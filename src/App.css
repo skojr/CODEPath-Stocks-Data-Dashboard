@@ -1,0 +1,139 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* Layout */
+.app-layout {
+  display: flex;
+  height: 100vh;
+  background-color: #1e1e1e;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 250px;
+  background-color:#2a2a2a;
+  padding: 2rem 1rem;
+  border-right: 1px solid #333;
+}
+
+.sidebar h1 {
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Form styling */
+.symbol-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.symbol-form input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: none;
+  outline: none;
+}
+
+.symbol-form button {
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.symbol-form button:hover {
+  background-color: #666;
+}
+
+/* Stats styles (already nicely structured if using <Stats /> internally styled) */
+.sidebar .stats {
+  margin-top: 1rem;
+}
+
+/* Main content */
+.main-content {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Filter row */
+.filter-row {
+  margin: 1rem 0;
+  font-size: 1rem;
+  color: #ddd;
+}
+
+.filter-row input {
+  margin-left: 0.5rem;
+  padding: 0.4rem;
+  font-size: 1rem;
+  background-color: #222;
+  color: white;
+  border: 1px solid #555;
+  border-radius: 4px;
+}
+
+/* Table styles */
+.stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #1c1c1c;
+  color: #f1f1f1;
+  font-size: 0.95rem;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+.stock-table thead {
+  background-color: #333;
+}
+
+.stock-table th,
+.stock-table td {
+  border: 1px solid #444;
+  padding: 0.75rem;
+  text-align: center;
+}
+
+.stock-table tr:nth-child(even) {
+  background-color: #2a2a2a;
+}
+
+.stock-table tr:hover {
+  background-color: #444;
+}
+
+.stock-table-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #ccc;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
