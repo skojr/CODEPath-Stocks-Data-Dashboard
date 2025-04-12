@@ -1,0 +1,38 @@
+.stock-detail-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    font-family: Arial, sans-serif;
+  }
+  
+  .stock-detail-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  
+  .stock-info {
+    flex: 1;
+  }
+  
+  .company-name {
+    font-size: 2rem;
+  }
+  
+  .stock-subheader {
+    margin: 0.25rem 0;
+  }
+  
+  .stock-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .stock-details {
+    margin-bottom: 2rem;
+  }
+  
+
+  

@@ -5,19 +5,31 @@
   text-align: center;
 }
 
+nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+.home-link {
+  border: 1px dotted white;
+  background: #1d1f1d;
+  width: 75px;
+}
+
 /* Layout */
 .app-layout {
   display: flex;
   height: 100vh;
   background-color: #1e1e1e;
   color: white;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: "Segoe UI", sans-serif;
 }
 
 /* Sidebar styling */
 .sidebar {
   width: 250px;
-  background-color:#2a2a2a;
+  background-color: #2a2a2a;
   padding: 2rem 1rem;
   border-right: 1px solid #333;
 }
@@ -124,10 +136,8 @@
   color: #ccc;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.stock-detail-header {
+  padding: 0 40px;
 }
 
 .card {

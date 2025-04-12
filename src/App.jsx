@@ -3,13 +3,15 @@ import "./App.css";
 import StockTable from "./StockTable";
 import Stats from "./Stats";
 import axios from "axios";
-// import { mockStockMap } from "./mockStockData";
+import { mockStockMap } from "./mockStockData";
+import StockCard from "./components/StockCard";
+import Sidebar from "./components/Sidebar";
 
 function App() {
   const [stockMap, setStockMap] = useState(new Map());
   const [inputValue, setInputValue] = useState("");
-  const [symbol, setSymbol] = useState("IBM");
-  const API_KEY = import.meta.env.VITE_API_KEY;
+  const [symbol, setSymbol] = useState("AAPL");
+  const API_KEY = import.meta.env.VITE_TWELVE_API_KEY;
   const URL = `https://api.twelvedata.com/time_series?apikey=${API_KEY}&interval=1h&symbol=${symbol}&country=US&type=stock&timezone=utc`;
 
   const getAverage = (map, key) => {
@@ -38,11 +40,14 @@ function App() {
   const avgHigh = getAverage(stockMap, "2. high");
   const numOfStocks = stockMap.size;
 
-  const fetchData = async (symbolToFetch) => {
+  const fetchData = async (optionalSymbol) => {
+    const sym = optionalSymbol || symbol;
+    const URL = `https://api.twelvedata.com/time_series?symbol=${sym}&interval=1h&apikey=${API_KEY}`;
+
     try {
-      const URL = `https://api.twelvedata.com/time_series?symbol=${symbol}&interval=1h&apikey=${API_KEY}`;
       const response = await axios.get(URL);
       const values = response.data.values;
+      console.log(values);
 
       if (values) {
         const dataMap = new Map(
@@ -78,36 +83,25 @@ function App() {
 
   useEffect(() => {
     fetchData().catch(console.error);
-    setStockMap(stockMap);
+    setStockMap(mockStockMap);
   }, []);
 
   return (
     <div className="app-layout">
       {/* Sidebar */}
-      <div className="sidebar">
-        <h1>{symbol} Stocks</h1>
-
-        <form onSubmit={updateSymbol} className="symbol-form">
-          <input
-            type="text"
-            placeholder="Enter stock symbol (e.g. AAPL)"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value.toUpperCase())}
-          />
-          <button type="submit">Update</button>
-        </form>
-
-        <Stats
-          symbol={symbol}
-          stockMap={stockMap}
-          std={std}
-          avgHigh={avgHigh}
-          numOfStocks={numOfStocks}
-        />
-      </div>
+      <Sidebar
+        symbol={symbol}
+        stockMap={stockMap}
+        onSymbolUpdate={async (newSymbol) => {
+          setSymbol(newSymbol);
+          await fetchData(newSymbol);
+        }}
+      />
 
       {/* Main content */}
       <div className="main-content">
+        <h3>Click Company Logo Below to Learn More!</h3>
+        <StockCard symbol={symbol} />
         <StockTable
           stockMap={stockMap}
           std={std}
